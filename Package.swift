@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version: 6.0
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 /*
@@ -27,12 +27,15 @@ import PackageDescription
 
 let package = Package(
     name: "MessageKit",
-    platforms: [.iOS(.v12)],
+    platforms: [
+		.iOS(.v16),
+		.visionOS(.v2)
+    ],
     products: [
         .library(name: "MessageKit", targets: ["MessageKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/nathantannar4/InputBarAccessoryView", .upToNextMajor(from: "5.4.0"))
+        .package(url: "git@github.com:HaleXie/InputBarAccessoryView.git", branch: "visionOS")
     ],
     targets: [
         .target(
@@ -40,9 +43,10 @@ let package = Package(
             dependencies: ["InputBarAccessoryView"],
             path: "Sources",
             exclude: ["Supporting/Info.plist", "Supporting/MessageKit.h"],
+            resources: [.process("Assets.xcassets")],
             swiftSettings: [SwiftSetting.define("IS_SPM")]
         ),
         .testTarget(name: "MessageKitTests", dependencies: ["MessageKit"])
     ],
-    swiftLanguageVersions: [.v5]
+    swiftLanguageModes: [.v5]
 )
