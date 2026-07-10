@@ -35,7 +35,7 @@ let package = Package(
         .library(name: "MessageKit", targets: ["MessageKit"]),
     ],
     dependencies: [
-        .package(url: "git@github.com:VIPAAR/InputBarAccessoryView.git", revision: "3de95b56aac7dfca0837b792aab47b8f950462b8")
+        .package(url: "git@github.com:VIPAAR/InputBarAccessoryView.git", exact: "5.4.0-hl-1")
     ],
     targets: [
         .target(
